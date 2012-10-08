@@ -30,6 +30,9 @@ public class MockComponentRenderer extends ComponentRenderer {
         return new Object();
     }
 
+    public void initializeUi(Component component) {
+    }
+
     public void addChild(Component child) {
     }
 }

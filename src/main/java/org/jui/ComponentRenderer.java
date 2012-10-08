@@ -25,6 +25,10 @@ package org.jui;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/**
+ * The default renderer of a <code>Component</code>. This renderer uses
+ * Swing to render UI components.
+ */
 public class ComponentRenderer {
     private static ComponentRenderer instance = null;
 
@@ -38,10 +42,33 @@ public class ComponentRenderer {
         return instance;
     }
 
+    /**
+     * Creates the UI object to be rendered. This default implementation
+     * creates a JLabel.
+     *
+     * @param component the component to render
+     * @return the root UI object for the component
+     */
     public Object createUi(Component component) {
         return new JLabel("Hello World!");
     }
 
+    /**
+     * Initializes the UI object created by <code>createUi</code> by
+     * configuring properties that can only be set after the UI object
+     * is added in some container.
+     *
+     * @param comonent the component whose UI object is to be initialized
+     *     as it is added in some container
+     */
+    public void initializeUi(Component component) {
+    }
+
+    /**
+     * Adds <code>child</code> in the <code>parent</code> container.
+     *
+     * @param child the child component to be added
+     */
     public void addChild(Component child) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

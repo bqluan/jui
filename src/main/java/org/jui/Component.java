@@ -54,11 +54,26 @@ public class Component {
 
         this.renderer.addChild(this);
 
+        this.initializeUi();
+
         this.rendered = true;
     }
 
+    /**
+     * Creates the UI object to be rendered. The UI object type is determined
+     * by the <code>renderer</code> object. This makes it possible to use
+     * different technique to render UI objects.
+     */
     public void createUi() {
         this.ui = this.renderer.createUi(this);
+    }
+
+    /**
+     * Initializes the UI object by configuring properties that can only be set
+     * after the UI object is added in some parent container.
+     */
+    public void initializeUi() {
+        this.renderer.initializeUi(this);
     }
 
     public Object getUi() {
