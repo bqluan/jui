@@ -26,17 +26,19 @@ package org.jui;
  * Default implementation of UI component. This defines the standard design pattern
  * that all UI components should follow.
  */
-public class Component {
+public class Component extends EventTarget {
     private ComponentRenderer renderer = null;
     private boolean rendered = false;
     private Object ui = null;
 
     public Component() {
-        this(null);
+        this(null, null);
     }
 
-    public Component(ComponentRenderer renderer) {
-        this.renderer = renderer != null ? renderer : ComponentRenderer.getInstance();
+    public Component(ComponentRenderer renderer, EventHelper eventHelper) {
+        super(eventHelper);
+        this.renderer =
+            renderer != null ? renderer : ComponentRenderer.getInstance();
     }
 
     public boolean isRendered() {
@@ -74,9 +76,19 @@ public class Component {
      */
     public void initializeUi() {
         this.renderer.initializeUi(this);
+
+        this.getEventHelper().listen(this.ui, "click", new EventListener() {
+            public void handleEvent(Event e) {
+                setText("clicked");
+            }
+        });
     }
 
     public Object getUi() {
         return this.ui;
+    }
+
+    public void setText(String text) {
+        this.renderer.setText(this, text);
     }
 }

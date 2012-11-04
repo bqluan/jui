@@ -32,7 +32,7 @@ import javax.swing.JLabel;
 public class ComponentRenderer {
     private static ComponentRenderer instance = null;
 
-    public ComponentRenderer() {
+    protected ComponentRenderer() {
     }
 
     public static ComponentRenderer getInstance() {
@@ -75,5 +75,10 @@ public class ComponentRenderer {
         frame.getContentPane().add((java.awt.Component)child.getUi());
         frame.pack();
         frame.show();
+    }
+
+    public void setText(Component component, String text) {
+        JLabel label = (JLabel)component.getUi();
+        label.setText(text);
     }
 }

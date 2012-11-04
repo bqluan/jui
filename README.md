@@ -21,14 +21,5 @@ to render your components on a screen, or even to a printer.
 # How to compile the jui project?
 You need to install Apache Maven.
 
-# Example
-Modify your main so that it looks like this one. The default `ComponentRenderer`
-renders a JLabel in a JFrame.
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new Component().render();
-            }
-        });
-    }
+# Demo
+Run `java org.jui.Demo` after compiling the source code. The default `ComponentRenderer` renders a JLabel in a JFrame.
